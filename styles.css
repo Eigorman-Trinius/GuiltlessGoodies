@@ -1,3 +1,49 @@
+/* Cookie Size Pop-up (MVP) */
+.cookie-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.cookie-popup-content {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  min-width: 300px;
+  max-width: 90vw;
+  position: relative;
+  text-align: center;
+}
+.cookie-popup-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+  font-size: 2rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+.size-btn {
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.size-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
 :root {
   --bg: #faf7f4;
   --bg-alt: #ffffff;

@@ -146,89 +146,47 @@
             <p>Choose your flavor, flour blend, and size.</p>
           </div>
           <div class="product-grid">
-            <!-- Double Choco‑Chip -->
-            <article class="product-card" data-category="cookies">
-              <h4>Double Choco‑Chip – Low‑Spike – Mighty‑Goody</h4>
-              <p class="product-tag">Low‑Spike Blend • Cookie • Mighty</p>
-              <p class="product-desc">
-                A rich, double‑chocolate cookie with a soft, chewy center and low‑spike flour blend.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
+            <!-- Chocolate Chip Jammies -->
+            <article class="product-card" data-category="cookies" data-cookie="choc-chip-jammies">
+              <h4>Chocolate Chip Jammies</h4>
+              <p class="product-desc">Classic chocolate chip cookies, soft and gooey with a hint of nostalgia.</p>
+              <button class="btn tertiary select-size-btn">Select Size</button>
             </article>
- 
-            <article class="product-card" data-category="cookies">
-              <h4>Double Choco‑Chip – Low‑Spike – Micro‑Goody</h4>
-              <p class="product-tag">Low‑Spike Blend • Cookie • Micro</p>
-              <p class="product-desc">
-                Bite‑size chocolate indulgence, perfect for portion‑friendly snacking.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
+
+            <!-- Snickerdoodles -->
+            <article class="product-card" data-category="cookies" data-cookie="snickerdoodles">
+              <h4>Snickerdoodles</h4>
+              <p class="product-desc">Cinnamon-sugar coated, soft and chewy with a classic tang.</p>
+              <button class="btn tertiary select-size-btn">Select Size</button>
             </article>
- 
-            <article class="product-card" data-category="cookies">
-              <h4>Double Choco‑Chip – Classic‑Bake – Mega‑Goody</h4>
-              <p class="product-tag">Classic‑Bake Blend • Cookie • Mega</p>
-              <p class="product-desc">
-                A bakery‑style giant cookie with a classic crumb and better‑for‑you flour blend.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
+
+            <!-- Peanut Butter Chocolate Chip -->
+            <article class="product-card" data-category="cookies" data-cookie="pb-choc-chip">
+              <h4>Peanut Butter Chocolate Chip</h4>
+              <p class="product-desc">Rich peanut butter cookie loaded with chocolate chips.</p>
+              <button class="btn tertiary select-size-btn">Select Size</button>
             </article>
- 
-            <!-- Cinnamon Swirl Chip -->
-            <article class="product-card" data-category="cookies">
-              <h4>Cinnamon Swirl Chip – Low‑Spike – Micro‑Goody</h4>
-              <p class="product-tag">Low‑Spike Blend • Cookie • Micro</p>
-              <p class="product-desc">
-                Warm cinnamon, subtle sweetness, and a low‑spike flour base in a tiny, snackable size.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
+
+            <!-- Chocolate Chocolate Chip Cookie (PB Chip alternative) -->
+            <article class="product-card" data-category="cookies" data-cookie="choc-choc-chip">
+              <h4>Chocolate Chocolate Chip Cookie</h4>
+              <p class="product-desc">Decadent double chocolate cookie, soft and fudgy.</p>
+              <button class="btn tertiary select-size-btn">Select Size</button>
             </article>
- 
-            <article class="product-card" data-category="cookies">
-              <h4>Cinnamon Swirl Chip – Low‑Spike – Mighty‑Goody</h4>
-              <p class="product-tag">Low‑Spike Blend • Cookie • Mighty</p>
-              <p class="product-desc">
-                A cozy, cinnamon‑forward cookie with chocolate chips and a soft, satisfying bite.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
-            </article>
- 
-            <article class="product-card" data-category="cookies">
-              <h4>Cinnamon Swirl Chip – Classic‑Bake – Mighty‑Goody</h4>
-              <p class="product-tag">Classic‑Bake Blend • Cookie • Mighty</p>
-              <p class="product-desc">
-                Classic bakery texture with warm cinnamon and a balanced, oat‑style flour blend.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
-            </article>
- 
-            <!-- Maple Pecan Crunch -->
-            <article class="product-card" data-category="cookies">
-              <h4>Maple Pecan Crunch – Low‑Spike – Mega‑Goody</h4>
-              <p class="product-tag">Low‑Spike Blend • Cookie • Mega</p>
-              <p class="product-desc">
-                A big, bakery‑style cookie with toasted pecans and maple notes, built on our Low‑Spike Blend.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
-            </article>
- 
-            <article class="product-card" data-category="cookies">
-              <h4>Maple Pecan Crunch – Low‑Spike – Mighty‑Goody</h4>
-              <p class="product-tag">Low‑Spike Blend • Cookie • Mighty</p>
-              <p class="product-desc">
-                Crunchy pecans, gentle maple sweetness, and a soft, low‑spike crumb.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
-            </article>
- 
-            <article class="product-card" data-category="cookies">
-              <h4>Maple Pecan Crunch – Classic‑Bake – Micro‑Goody</h4>
-              <p class="product-tag">Classic‑Bake Blend • Cookie • Micro</p>
-              <p class="product-desc">
-                Tiny, crunchy‑edged bites with a classic bakery feel and pecan‑maple flavor.
-              </p>
-              <button class="btn tertiary">Add to Cart</button>
-            </article>
+          </div>
+
+          <!-- Cookie Size Pop-up (MVP) -->
+          <div id="cookie-popup" class="cookie-popup" style="display:none;">
+            <div class="cookie-popup-content">
+              <span class="cookie-popup-close" id="cookie-popup-close">&times;</span>
+              <h4 id="popup-cookie-title">Select Cookie Size</h4>
+              <div id="popup-size-options">
+                <button class="btn size-btn">Micro‑Goody</button>
+                <button class="btn size-btn">Mighty‑Goody</button>
+                <button class="btn size-btn">Mega‑Goody</button>
+              </div>
+            </div>
+          </div>
           </div>
         </section>
  
