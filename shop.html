@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shop | Guiltless Goodies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Guiltless Goodies</a></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a href="shop.html" class="nav-dropdown-toggle nav-active">Shop by Category</a>
+          <div class="nav-dropdown-menu">
+            <a href="cookies.html">Cookies</a>
+            <a href="shop.html#muffins">Muffins</a>
+            <a href="shop.html#breads">Breads &amp; Loaves</a>
+            <a href="shop.html#bars">Bars, Barks &amp; Bites</a>
+          </div>
+        </div>
+        <a href="index.html#blends">Flour Blends</a>
+        <a href="index.html#binders">Vegan Options</a>
+        <a href="about.html">Our Story</a>
+        <a href="#" class="cart-link" id="cart-link"><span style="font-size:1.2em">&#128722;</span> Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="categories">
+      <div class="container">
+        <div class="category-grid">
+          <a href="cookies.html" class="category-card">
+            <h3>Cookies</h3>
+            <p>Low spike cookies in three sizes and two flour blends. Vegan options available.</p>
+          </a>
+          <div class="category-card coming-soon" id="muffins">
+            <h3>Muffins</h3>
+            <p><em>Coming soon</em></p>
+          </div>
+          <div class="category-card coming-soon" id="breads">
+            <h3>Breads &amp; Loaves</h3>
+            <p><em>Coming soon</em></p>
+          </div>
+          <div class="category-card coming-soon" id="bars">
+            <h3>Bars, Barks &amp; Bites</h3>
+            <p><em>Coming soon</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
+      <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
+      <div class="footer-col footer-right footer-meta">&copy; <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

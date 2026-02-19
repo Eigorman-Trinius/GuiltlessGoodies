@@ -87,8 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const binderSelect = document.getElementById("binder-type");
     const binderInfo = document.getElementById("binder-info");
     const binderDescriptions = {
-      "vegan": "<strong>Vegan – Aquafaba Powder &amp; Refined Coconut Oil:</strong> We swap two ingredients: aquafaba powder replaces eggs and refined coconut oil replaces butter. Fully plant-based, egg-free, and dairy-free — with the same great texture.",
-      "non-vegan": "<strong>Non-Vegan – Eggs &amp; Butter:</strong> We use whole eggs and real butter for a rich, classic bakery structure — golden lift, that familiar chew, and the texture you know and love from a proper homemade cookie."
+      "vegan": "<strong>Vegan: Aquafaba Powder &amp; Refined Coconut Oil</strong><br>We swap two ingredients: aquafaba powder replaces eggs and refined coconut oil replaces butter. Fully plant-based, egg-free, and dairy-free with the same great texture.",
+      "non-vegan": "<strong>Classic: Eggs &amp; Butter</strong><br>We use whole eggs and real butter for a rich, classic bakery structure with golden lift, that familiar chew, and the texture you know and love from a proper homemade cookie."
     };
     function updateBinderInfo() {
       if (binderInfo && binderSelect) {
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const cookieName = popupTitle.textContent.replace("Customize Your ", "");
         addToCart({ name: cookieName, size, blend, binder, qty });
         popup.style.display = "none";
-        window.location.href = "order.html";
+        window.location.href = window.ORDER_PATH || "order.html";
       });
     }
 
@@ -159,6 +159,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (yearSpan) {
       yearSpan.textContent = new Date().getFullYear();
     }
+
+    // Nav dropdown click toggle
+    document.querySelectorAll(".nav-dropdown-toggle").forEach(toggle => {
+      toggle.addEventListener("click", function(e) {
+        e.preventDefault();
+        const dropdown = this.closest(".nav-dropdown");
+        const isOpen = dropdown.classList.contains("open");
+        document.querySelectorAll(".nav-dropdown").forEach(d => d.classList.remove("open"));
+        if (!isOpen) dropdown.classList.add("open");
+      });
+    });
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest(".nav-dropdown")) {
+        document.querySelectorAll(".nav-dropdown").forEach(d => d.classList.remove("open"));
+      }
+    });
  
     // Smooth scroll for internal links
     const links = document.querySelectorAll('a[href^="#"]');

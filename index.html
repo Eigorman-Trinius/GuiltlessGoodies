@@ -1,42 +1,35 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Guiltless Goodies – Indulgence Without the Spike | Premium Healthy Snacks</title>
+  <title>Guiltless Goodies | Indulgence Without the Spike</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <div class="logo">Guiltless Goodies</div>
+      <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Guiltless Goodies</a></div>
       <nav class="nav">
-        <a href="#hero">Home</a>
-        <a href="#categories">Shop</a>
-        <a href="#blends">Flour Blendss</a>
-        <a href="#binders">Vegan Options</a>
-        <a href="#products">Featured</a>
-        <a href="#story">Our Story</a>
-          <a href="#cart" class="cart-link" id="cart-link"><span style="font-size:1.2em">🛒</span> Cart</a>
-      </nav>
-    </div>
-  </header>  
- 
-  <main>
-        <!-- CART MODAL -->
-        <div id="cart-modal" class="cart-modal" style="display:none;">
-          <div class="cart-modal-content">
-            <span class="cart-modal-close" id="cart-modal-close">&times;</span>
-            <h2>Your Cart</h2>
-            <div id="cart-items"></div>
-            <div class="cart-featured-product" id="cart-featured-jammie" style="display:none;">
-              <h3>Chocolate Chip Jammies</h3>
-              <img src="jammie.jpg" alt="Chocolate Chip Jammies" style="max-width:180px;border-radius:10px;margin-bottom:1rem;">
-              <p>Classic chocolate chip cookies, soft and gooey with nostalgic flavor. Loaded with sugar-free chocolate chips for the perfect treat. Always low-carb, diabetic-friendly, and crafted for indulgence without compromise.</p>
-              <div id="cart-jammie-options"></div>
-            </div>
+        <a href="index.html" class="nav-active">Home</a>
+        <div class="nav-dropdown">
+          <a href="shop.html" class="nav-dropdown-toggle">Shop by Category</a>
+          <div class="nav-dropdown-menu">
+            <a href="cookies.html">Cookies</a>
+            <a href="shop.html#muffins">Muffins</a>
+            <a href="shop.html#breads">Breads &amp; Loaves</a>
+            <a href="shop.html#bars">Bars, Barks &amp; Bites</a>
           </div>
         </div>
+        <a href="#blends">Flour Blends</a>
+        <a href="#binders">Vegan Options</a>
+        <a href="about.html">Our Story</a>
+        <a href="shop.html" class="cart-link"><span style="font-size:1.2em">🛒</span> Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
     <!-- HERO -->
     <section id="hero" class="hero">
       <div class="container hero-inner">
@@ -46,109 +39,88 @@
         <div class="hero-text">
           <h1>Indulgence Without the Spike</h1>
           <p>
-            Low‑carb, low‑spike treats crafted with our signature
-            <strong>Guiltless Low‑Spike Blend</strong> and
-            <strong>Slightly Guilty Blend</strong>.
+            Real bakery treats made entirely to order, built around your life.
+            Every Guiltless Goody starts with a thoughtful system: choose your <strong>flour blend</strong> for the carb profile you want,
+            your <strong>binder</strong> for the lifestyle you live (vegan or classic),
+            and your <strong>size</strong> for exactly how much you want to indulge.
+          </p>
+          <p class="hero-sub">
+            Low carb. Diabetic friendly. Vegan available. Always made fresh with quality ingredients for genuinely great taste.
           </p>
           <div class="hero-actions">
-            <a href="#cookies" class="btn primary">Shop Cookies</a>
+            <a href="cookies.html" class="btn primary">Shop Cookies</a>
             <a href="#blends" class="btn secondary">Explore Our Flour Blends</a>
           </div>
         </div>
-           </div>
+      </div>
     </section>
- 
+
     <!-- WHY SECTION -->
     <section id="why" class="why">
       <div class="container">
         <h2>Why Guiltless Goodies Works</h2>
         <div class="why-grid">
           <div class="why-item">
-            <h3>Low‑Spike by Design</h3>
+            <h3>Low Spike by Design</h3>
             <p>
-              Crafted with our signature Low‑Spike Blend for steady energy and low net carbs.
+              Our flour blends are built from the ground up to keep net carbs low and blood sugar steady, so you can indulge without the aftermath.
             </p>
           </div>
           <div class="why-item">
-            <h3>Classic Bakery Texture</h3>
+            <h3>Made to Order, Every Time</h3>
             <p>
-              Prefer a traditional crumb? Our Classic‑Bake Blend delivers familiar softness with a better‑for‑you twist.
+              Nothing sits on a shelf. Every treat is made fresh to your exact specs: the blend you want, the binder that fits your lifestyle, the size that is right for the moment.
             </p>
           </div>
           <div class="why-item">
-            <h3>Flavor → Flour → Size</h3>
+            <h3>Flavor &rarr; Flour &rarr; Binder &rarr; Size</h3>
             <p>
-              A simple, intuitive system that lets you choose exactly how you want to indulge.
+              A simple four-step system that puts you in control. Pick your flavor, choose your blend, select vegan or classic, and size it to your indulgence.
             </p>
           </div>
         </div>
       </div>
     </section>
- 
-    <!-- CATEGORIES -->
-    <section id="categories" class="categories">
-      <div class="container">
-        <h2>Shop by Category</h2>
-        <div class="category-grid">
-          <a href="#cookies" class="category-card">
-            <h3>Cookies</h3>
-            <p>Low‑spike cookies in three sizes and two flour blends.</p>
-          </a>
-          <div class="category-card coming-soon">
-            <h3>Muffins</h3>
-            <p><em>Coming soon</em></p>
-          </div>
-          <div class="category-card coming-soon">
-            <h3>Breads &amp; Loaves</h3>
-            <p><em>Coming soon</em></p>
-          </div>
-          <div class="category-card coming-soon">
-            <h3>Bars ,Barks &amp; Bites</h3>
-            <p><em>Coming soon</em></p>
-          </div>
-        </div>
-      </div>
-    </section>
- 
+
     <!-- FLOUR BLENDS -->
     <section id="blends" class="blends">
       <div class="container">
         <h2>Our Signature Flour Blends</h2>
         <div class="blend-grid">
           <div class="blend-card">
-            <h3>Guiltless Low‑Spike Blend</h3>
+            <h3>Guiltless Low Spike Blend</h3>
             <p class="blend-tag">Almond + Coconut</p>
             <p>
-              A smart mix of almond coconut flour designed for ultra low‑carb, low‑spike indulgence.
+              A smart mix of almond and coconut flour designed for ultra low carb, low spike indulgence.
               Soft texture, clean ingredients, and steady energy.
             </p>
             <ul>
-              <li>Ultra low‑carb</li>
-              <li>Low‑spike, diabetic‑friendly</li>
+              <li>Ultra low carb</li>
+              <li>Low spike and diabetic friendly</li>
               <li>Soft, chewy cookies and fluffy muffins</li>
             </ul>
           </div>
           <div class="blend-card">
-            <h3>Slightly Guiltly Blend</h3>
+            <h3>Slightly Guilty Blend</h3>
             <p class="blend-tag">Almond + Oat</p>
             <p>
-              A classic-bake balanced blend of almond and oat flour that delivers a classic bakery texture with a better‑for‑you twist.
+              A balanced blend of almond and oat flour that delivers a classic bakery texture with a better for you twist.
             </p>
             <ul>
               <li>Classic crumb and softness</li>
-              <li>Lower‑spike than wheat‑based treats</li>
-              <li>Perfect for “wholesome bakery” vibes</li>
+              <li>Lower spike than wheat based treats</li>
+              <li>Perfect for wholesome bakery vibes</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
- 
+
     <!-- BINDER OPTIONS -->
     <section id="binders" class="binders">
       <div class="container">
         <h2>Choose Your Binder</h2>
-        <p class="binders-intro">Every Guiltless Goodies treat is made to order — including your binder. Whether you keep it classic or fully plant-based, we've got you covered.</p>
+        <p class="binders-intro">Every Guiltless Goodies treat is made to order, including your binder. Whether you keep it classic or fully plant-based, we have got you covered.</p>
         <div class="binder-grid">
           <div class="binder-card">
             <span class="binder-badge">🌱 Vegan</span>
@@ -157,7 +129,7 @@
             <ul>
               <li>Fully vegan, egg-free &amp; dairy-free</li>
               <li>Aquafaba powder binds just like eggs</li>
-              <li>Refined coconut oil has a neutral flavor — no coconut taste</li>
+              <li>Refined coconut oil has a neutral flavor with no coconut taste</li>
               <li>Same great texture, no compromise</li>
               <li>Perfect for plant-based lifestyles</li>
             </ul>
@@ -165,7 +137,7 @@
           <div class="binder-card">
             <span class="binder-badge">🥚 Classic</span>
             <h3>Eggs &amp; Butter</h3>
-            <p>Whole eggs and real butter bring a rich, classic bakery structure — golden lift, that familiar chew, and the texture you know and love from a proper homemade cookie.</p>
+            <p>Whole eggs and real butter bring a rich, classic bakery structure with golden lift, that familiar chew, and the texture you know and love from a proper homemade cookie.</p>
             <ul>
               <li>Rich, traditional texture</li>
               <li>Classic bakery-style chew, lift &amp; richness</li>
@@ -175,184 +147,16 @@
         </div>
       </div>
     </section>
-
-    <!-- FEATURED PRODUCTS -->
-    <section id="products" class="products">
-      <div class="container">
-        <h2>Featured Launch Lineup</h2>
- 
-        <!-- COOKIES -->
-        <section id="cookies" class="product-section">
-          <div class="section-header">
-            <h3>Cookies</h3>
-            <p>Choose your flavor, flour blend, and size.</p>
-          </div>
-          <div class="product-grid">
-            <!-- Salted Almond Ember -->
-            <article class="product-card" data-category="cookies" data-cookie="salted-almond-ember">
-              <h4>Salted Almond Ember</h4>
-              <p class="product-desc">Thick, chewy almond butter toffee cookie with a touch of sea salt. Indulge in a rich, bakery-style treat with a perfect sweet-salty bite. Always low-carb, diabetic-friendly, and crafted for indulgence without the spike.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-
-            <!-- Cardamon Crush Pistachio Cardamom Cookie -->
-            <article class="product-card" data-category="cookies" data-cookie="cardamon-crush-pistachio">
-              <h4>Cardamon Crush Pistachio Cardamom</h4>
-              <p class="product-desc">A soft, aromatic cookie with pistachio and cardamom for a unique flavor experience. Optionally finished with a sugar-free white chocolate drizzle. Always low-carb, diabetic-friendly, and crafted for beautiful, bakery-style indulgence.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-
-            <!-- Chocolate Chip Jammies -->
-            <article class="product-card" data-category="cookies" data-cookie="choc-chip-jammies">
-              <h4>Chocolate Chip Jammies</h4>
-              <p class="product-desc">Classic chocolate chip cookies, soft and gooey with nostalgic flavor. Loaded with sugar-free chocolate chips for the perfect treat. Always low-carb, diabetic-friendly, and crafted for indulgence without compromise.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-
-            <!-- Snickerdoodles -->
-            <article class="product-card" data-category="cookies" data-cookie="snickerdoodles">
-              <h4>Snickerdoodles</h4>
-              <p class="product-desc">Thick, chewy cookie with a classic cinnamon-sugar coating and signature tang. Enjoy a soft, bakery-style texture and nostalgic flavor. Always low-carb, diabetic-friendly, and crafted for indulgence without the spike.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-
-            <!-- Peanut Butter Chocolate Chip -->
-            <article class="product-card" data-category="cookies" data-cookie="pb-choc-chip">
-              <h4>Peanut Butter Chocolate Chip</h4>
-              <p class="product-desc">Rich peanut butter cookie loaded with sugar-free chocolate chips. Always low-carb, diabetic-friendly, and crafted for indulgence without compromise.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-
-            <!-- Chocolate Chocolate Chip Cookie (PB Chip alternative) -->
-            <article class="product-card" data-category="cookies" data-cookie="choc-choc-chip">
-              <h4>Chocolate Chocolate Chip Cookie</h4>
-              <p class="product-desc">Decadent double chocolate cookie, soft and fudgy. Packed with sugar-free chocolate chips for a rich chocolate experience. Always low-carb, diabetic-friendly, and crafted for indulgence without compromise.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-
-            <!-- Banana Oatmeal Almond Cookie (PB Chip alternative) -->
-            <article class="product-card" data-category="cookies" data-cookie="banana-oat-almond">
-              <h4>Banana Oatmeal Almond Cookie</h4>
-              <p class="product-desc">Banana oatmeal almond cookie, soft and oatey with wholesome flavor. Always low-carb, diabetic-friendly, and crafted for indulgence without compromise.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-
-            <!-- Banana Nut Cookie -->
-            <article class="product-card" data-category="cookies" data-cookie="banana-nut">
-              <h4>Banana Nut Cookie</h4>
-              <p class="product-desc">Moist banana cookie packed with crunchy walnuts and a hint of spice. Always low-carb, diabetic-friendly, and crafted for indulgence without compromise.</p>
-              <button class="btn tertiary select-size-btn">Add to Cart</button>
-            </article>
-          </div>
-
-          <!-- Cookie Size Pop-up (MVP) -->
-          <div id="cookie-popup" class="cookie-popup" style="display:none;">
-            <div class="cookie-popup-content">
-              <span class="cookie-popup-close" id="cookie-popup-close">&times;</span>
-              <h4 id="popup-cookie-title">Select Cookie Size</h4>
-              <div id="popup-size-options">
-                <form id="cookie-options-form">
-                  <label for="cookie-size">Size:</label>
-                  <select id="cookie-size" name="cookie-size">
-                    <option value="micro">Micro‑Goody</option>
-                    <option value="mighty">Mighty‑Goody</option>
-                    <option value="mega">Mega‑Goody</option>
-                  </select>
-                  <br>
-                  <label for="flour-blend">Flour Blend:</label>
-                  <select id="flour-blend" name="flour-blend">
-                    <option value="guiltless">Guiltless Low‑Spike</option>
-                    <option value="slightly-guilty">Slightly Guilty</option>
-                  </select>
-                  <br>
-                  <label for="binder-type">Binder:</label>
-                  <select id="binder-type" name="binder-type">
-                    <option value="vegan">Vegan</option>
-                    <option value="non-vegan">Non-Vegan</option>
-                  </select>
-                  <div id="binder-info" class="binder-info-callout"></div>
-                  <br>
-                  <label for="cookie-qty">Quantity:</label>
-                  <input type="number" id="cookie-qty" name="cookie-qty" min="1" value="1">
-                  <br>
-                    <button type="submit" class="btn add-cart-btn">Add to Cart & Go to Cart</button>
-                </form>
-              </div>
-            </div>
-          </div>
-              <!-- CART SECTION -->
-              <section id="cart" class="cart-section" style="display:none;">
-                <div class="container">
-                  <h2>Your Cart</h2>
-                  <div id="cart-items"></div>
-                  <button class="btn" id="cart-close-btn">Close Cart</button>
-                </div>
-              </section>
-          </div>
-        </section>
- 
-        <!-- MUFFINS -->
-        <section id="muffins" class="product-section coming-soon">
-          <div class="section-header">
-            <h3>Muffins</h3>
-            <p><em>Coming soon</em></p>
-          </div>
-        </section>
-
-        <!-- BREADS -->
-        <section id="breads" class="product-section coming-soon">
-          <div class="section-header">
-            <h3>Breads &amp; Loaves</h3>
-            <p><em>Coming soon</em></p>
-          </div>
-        </section>
-
-        <!-- BARS & BITES (placeholder for future) -->
-        <section id="bars" class="product-section coming-soon">
-          <div class="section-header">
-            <h3>Bars ,Barks &amp; Bites</h3>
-            <p><em>Coming soon</em></p>
-          </div>
-        </section>
-      </div>
-    </section>
- 
-    <!-- BRAND STORY -->
-    <section id="story" class="story">
-      <div class="container">
-        <h2>Our Story</h2>
-        <p>Guiltless Goodies was created with one mission: to bring back indulgence without the sugar spike.
-        </p>
-        <p>
-          We believe treats should feel fun, comforting, and delicious — not restrictive or complicated. That’s why we
-          developed two signature flour systems that let you choose your experience without compromising your health.
-        </p>
-        <p>
-          Our <strong>Low‑Spike Blend</strong> is crafted from almond and coconut flour to deliver ultra
-          low‑carb, low‑glycemic treats that taste like the real thing. For those who crave a classic bakery feel, our
-          <strong>Slightly-Guilty Blend</strong> combines oat and almond flour for a soft, nostalgic crumb with a
-          better‑for‑you twist.
-        </p>
-        <p>
-          Every flavor, every size, every product follows a simple structure:
-          <strong>Flavor → Flour Blend → Size</strong>. It keeps things clean, intuitive, and endlessly customizable.
-        </p>
-        <p>
-          Guiltless Goodies is indulgence, reimagined — treats that love you back.
-        </p>
-      </div>
-    </section>
   </main>
- 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
-    <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
-    <div class="footer-col footer-right footer-meta">© <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
-  </div>
-</footer>
- 
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
+      <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
+      <div class="footer-col footer-right footer-meta">&copy; <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
- 

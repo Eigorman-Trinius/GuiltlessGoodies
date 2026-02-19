@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Peanut Butter Chocolate Chip | Guiltless Goodies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo"><a href="../../index.html" style="text-decoration:none;color:inherit;">Guiltless Goodies</a></div>
+            <nav class="nav">
+        <a href="../../index.html">Home</a>
+        <div class="nav-dropdown">
+          <a href="../../shop.html" class="nav-dropdown-toggle">Shop by Category</a>
+          <div class="nav-dropdown-menu">
+            <a href="../../cookies.html">Cookies</a>
+            <a href="../../shop.html#muffins">Muffins</a>
+            <a href="../../shop.html#breads">Breads &amp; Loaves</a>
+            <a href="../../shop.html#bars">Bars, Barks &amp; Bites</a>
+          </div>
+        </div>
+        <a href="../../index.html#blends">Flour Blends</a>
+        <a href="../../index.html#binders">Vegan Options</a>
+        <a href="../../about.html">Our Story</a>
+        <a href="../../shop.html" class="cart-link"><span style="font-size:1.2em">&#128722;</span> Cart</a>
+      </nav>
+    </div>
+  </header>  <main>
+    <section class="product-detail">
+      <div class="container">
+        <nav class="breadcrumb"><a href="../../index.html">Home</a> &rsaquo; <a href="../../shop.html">Shop</a> &rsaquo; <a href="../../cookies.html">Cookies</a> &rsaquo; Peanut Butter Chocolate Chip</nav>
+        <div class="product-detail-inner">
+          <div class="product-detail-image">
+            <div class="product-image-placeholder">
+              <span>Photo coming soon</span>
+            </div>
+          </div>
+          <div class="product-detail-info">
+            <h1>Peanut Butter Chocolate Chip</h1>
+            <p class="product-detail-desc">Rich, dense peanut butter cookie loaded with sugar-free chocolate chips throughout. A bold, satisfying bite for peanut butter lovers. Low carb, diabetic friendly, and made entirely to order.</p>
+                    <div class="product-page-form">
+          <h3>Customize Your Order</h3>
+          <form id="cookie-options-form">
+            <label for="cookie-size">Size:</label>
+            <select id="cookie-size" name="cookie-size">
+              <option value="micro">Micro Goody</option>
+              <option value="mighty">Mighty Goody</option>
+              <option value="mega">Mega Goody</option>
+            </select>
+            <label for="flour-blend">Flour Blend:</label>
+            <select id="flour-blend" name="flour-blend">
+              <option value="guiltless">Guiltless Low Spike</option>
+              <option value="slightly-guilty">Slightly Guilty</option>
+            </select>
+            <label for="binder-type">Binder:</label>
+            <select id="binder-type" name="binder-type">
+              <option value="vegan">Vegan</option>
+              <option value="non-vegan">Classic</option>
+            </select>
+            <div id="binder-info" class="binder-info-callout"></div>
+            <label for="cookie-qty">Quantity:</label>
+            <input type="number" id="cookie-qty" name="cookie-qty" min="1" value="1">
+            <button type="submit" class="btn primary add-cart-btn">Add to Cart &amp; Checkout</button>
+          </form>
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="cart-modal" style="display:none;">
+          <div class="cart-modal-content">
+            <span class="cart-modal-close" id="cart-modal-close">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+          </div>
+        </div>
+        <div id="cookie-popup" style="display:none;"></div>
+        <div id="popup-cookie-title" style="display:none;"></div>
+          </div>
+        </div>
+        <a href="../../cookies.html" class="btn secondary" style="margin-top:2rem;display:inline-block;">&larr; Back to Cookies</a>
+      </div>
+    </section>
+  </main>  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
+      <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
+      <div class="footer-col footer-right footer-meta">&copy; <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
+    </div>
+  </footer>
+  <script>window.ORDER_PATH = "../../order.html";</script>
+  <script src="../../script.js"></script>
+</body>
+</html>
+
