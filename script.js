@@ -160,6 +160,21 @@ document.addEventListener("DOMContentLoaded", () => {
       yearSpan.textContent = new Date().getFullYear();
     }
 
+    // Hamburger menu toggle
+    const hamburger = document.querySelector(".nav-hamburger");
+    const navEl = document.querySelector(".nav");
+    if (hamburger && navEl) {
+      hamburger.addEventListener("click", function(e) {
+        e.stopPropagation();
+        navEl.classList.toggle("open");
+      });
+    }
+    document.addEventListener("click", function(e) {
+      if (navEl && !e.target.closest(".nav") && !e.target.closest(".nav-hamburger")) {
+        navEl.classList.remove("open");
+      }
+    });
+
     // Nav dropdown click toggle
     document.querySelectorAll(".nav-dropdown-toggle").forEach(toggle => {
       toggle.addEventListener("click", function(e) {
@@ -169,11 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".nav-dropdown").forEach(d => d.classList.remove("open"));
         if (!isOpen) dropdown.classList.add("open");
       });
-    });
-    document.addEventListener("click", function(e) {
-      if (!e.target.closest(".nav-dropdown")) {
-        document.querySelectorAll(".nav-dropdown").forEach(d => d.classList.remove("open"));
-      }
     });
  
     // Smooth scroll for internal links
