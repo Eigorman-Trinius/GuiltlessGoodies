@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Order | Guiltless Goodies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Guiltless Goodies</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#categories">Shop</a>
+        <a href="index.html#blends">Flour Blends</a>
+        <a href="index.html#products">Featured</a>
+        <a href="index.html#story">Our Story</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="order-section">
+      <div class="container">
+        <h2>Your Order</h2>
+        <div id="order-details">
+          <!-- Order details will be dynamically loaded here -->
+        </div>
+        <button class="btn" onclick="window.location.href='index.html'">Back to Shop</button>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
+      <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
+      <div class="footer-col footer-right footer-meta">© <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="order.js"></script>
+</body>
+</html>
