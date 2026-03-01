@@ -5,38 +5,122 @@
   <title>Your Order | Guiltless Goodies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K17LBYXKP4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K17LBYXKP4');
+  </script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <div class="logo">Guiltless Goodies</div>
+      <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Guiltless Goodies</a></div>
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="index.html#categories">Shop</a>
+        <div class="nav-dropdown">
+          <a href="shop.html" class="nav-dropdown-toggle">Shop by Category</a>
+          <div class="nav-dropdown-menu">
+            <a href="cookies.html">Cookies</a>
+            <a href="shop.html#muffins">Muffins</a>
+            <a href="shop.html#breads">Breads &amp; Loaves</a>
+            <a href="shop.html#bars">Bars, Barks &amp; Bites</a>
+          </div>
+        </div>
         <a href="index.html#blends">Flour Blends</a>
-        <a href="index.html#products">Featured</a>
-        <a href="index.html#story">Our Story</a>
+        <a href="index.html#binders">Vegan Options</a>
+        <a href="sweetener.html">Our Sweetener</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+        <a href="#" class="cart-link"><span style="font-size:1.2em">&#128722;</span> Cart <span class="cart-count-badge" style="display:none;"></span></a>
       </nav>
     </div>
   </header>
+
   <main>
-    <section class="order-section">
-      <div class="container">
-        <h2>Your Order</h2>
-        <div id="order-details">
-          <!-- Order details will be dynamically loaded here -->
+    <!-- Cart Review -->
+    <section class="order-section" id="order-review">
+      <div class="container order-container">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a> &rsaquo;
+          <a href="shop.html">Shop</a> &rsaquo;
+          Your Order
+        </nav>
+        <h1>Review Your Order</h1>
+        <p class="order-intro">Check your selections below. You can adjust quantities or remove items before placing your order.</p>
+
+        <div class="order-review-list" id="review-items">
+          <!-- Populated by order.js -->
         </div>
-        <button class="btn" onclick="window.location.href='index.html'">Back to Shop</button>
+
+        <div class="order-total" id="review-total"></div>
+
+        <div class="order-contact">
+          <h2>Your Contact Info</h2>
+          <p class="order-intro">We'll use this to follow up and confirm your order.</p>
+          <div class="order-contact-grid">
+            <div class="form-group">
+              <label for="customer-name">Name <span class="required">*</span></label>
+              <input type="text" id="customer-name" name="customer-name" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="customer-email">Email <span class="required">*</span></label>
+              <input type="email" id="customer-email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="customer-phone">Phone <span class="order-optional">(optional)</span></label>
+              <input type="tel" id="customer-phone" name="customer-phone" placeholder="(555) 000-0000" />
+            </div>
+            <div class="form-group form-group-full">
+              <label for="customer-notes">Notes <span class="order-optional">(optional)</span></label>
+              <textarea id="customer-notes" name="customer-notes" rows="3" placeholder="Allergies, delivery preferences, pickup window, etc."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div id="order-error" class="order-error" style="display:none;"></div>
+
+        <div class="order-actions">
+          <button class="btn primary" id="place-order-btn">Place Order</button>
+          <a href="cookies.html" class="btn secondary">Continue Shopping</a>
+          <button class="btn tertiary" id="clear-cart-btn">Clear Cart</button>
+        </div>
+
+        <p class="order-note">
+          <strong>Note:</strong> Guiltless Goodies are made entirely to order. After placing your order, we will follow up to confirm details, pricing, and delivery or pickup.
+        </p>
+      </div>
+    </section>
+
+    <!-- Order Confirmation (shown after placing) -->
+    <section class="order-section order-confirmation-section" id="order-confirmation" style="display:none;">
+      <div class="container order-container">
+        <div class="order-confirmation">
+          <div class="order-confirmation-icon">&#10003;</div>
+          <h2>Order Received!</h2>
+          <p>Thank you for your order. Your reference number is <strong id="order-number"></strong>.</p>
+          <p>A confirmation has been sent to <strong id="confirm-email"></strong>.</p>
+          <p>We will be in touch shortly to confirm your order details, pricing, and arrange delivery or pickup.</p>
+          <a href="cookies.html" class="btn primary" style="margin-top:1.5rem;display:inline-block;">Keep Shopping</a>
+        </div>
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
       <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
-      <div class="footer-col footer-right footer-meta">© <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
+      <div class="footer-col footer-right footer-meta">&copy; <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
   <script src="order.js"></script>
 </body>
 </html>

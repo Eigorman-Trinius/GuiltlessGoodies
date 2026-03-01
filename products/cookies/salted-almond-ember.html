@@ -5,6 +5,14 @@
   <title>Salted Almond Ember | Guiltless Goodies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../../styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K17LBYXKP4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K17LBYXKP4');
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -24,8 +32,10 @@
         </div>
         <a href="../../index.html#blends">Flour Blends</a>
         <a href="../../index.html#binders">Vegan Options</a>
+        <a href="../../sweetener.html">Our Sweetener</a>
         <a href="../../about.html">Our Story</a>
-        <a href="../../shop.html" class="cart-link"><span style="font-size:1.2em">&#128722;</span> Cart</a>
+        <a href="../../contact.html">Contact</a>
+        <a href="#" class="cart-link"><span style="font-size:1.2em">&#128722;</span> Cart <span class="cart-count-badge" style="display:none;"></span></a>
       </nav>
     </div>
   </header>  <main>
@@ -33,10 +43,11 @@
       <div class="container">
         <nav class="breadcrumb"><a href="../../index.html">Home</a> &rsaquo; <a href="../../shop.html">Shop</a> &rsaquo; <a href="../../cookies.html">Cookies</a> &rsaquo; Salted Almond Ember</nav>
         <div class="product-detail-inner">
-          <div class="product-detail-image">
+          <div class="product-detail-visual">
             <div class="product-image-placeholder">
               <span>Photo coming soon</span>
             </div>
+            <p class="product-photos-note">&#128247; Product photos coming soon</p>
           </div>
           <div class="product-detail-info">
             <h1>Salted Almond Ember</h1>
@@ -57,26 +68,18 @@
             </select>
             <label for="binder-type">Binder:</label>
             <select id="binder-type" name="binder-type">
-              <option value="vegan">Vegan</option>
-              <option value="non-vegan">Classic</option>
+              <option value="aquafaba">Aquafaba Powder (Vegan)</option>
+              <option value="flax-egg">Flax Egg (Vegan)</option>
+              <option value="non-vegan" selected>Classic</option>
             </select>
             <div id="binder-info" class="binder-info-callout"></div>
             <label for="cookie-qty">Quantity:</label>
             <input type="number" id="cookie-qty" name="cookie-qty" min="1" value="1">
-            <button type="submit" class="btn primary add-cart-btn">Add to Cart &amp; Checkout</button>
+            <button type="submit" class="btn primary add-cart-btn">Add to Cart</button>
           </form>
         </div>
 
-        <!-- Cart Modal -->
-        <div id="cart-modal" class="cart-modal" style="display:none;">
-          <div class="cart-modal-content">
-            <span class="cart-modal-close" id="cart-modal-close">&times;</span>
-            <h2>Your Cart</h2>
-            <div id="cart-items"></div>
-          </div>
-        </div>
-        <div id="cookie-popup" style="display:none;"></div>
-        <div id="popup-cookie-title" style="display:none;"></div>
+
           </div>
         </div>
         <a href="../../cookies.html" class="btn secondary" style="margin-top:2rem;display:inline-block;">&larr; Back to Cookies</a>
@@ -90,6 +93,7 @@
     </div>
   </footer>
   <script>window.ORDER_PATH = "../../order.html";</script>
+  <script src="../../cart.js"></script>
   <script src="../../script.js"></script>
 </body>
 </html>

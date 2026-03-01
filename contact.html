@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Us | Guiltless Goodies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K17LBYXKP4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K17LBYXKP4');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Guiltless Goodies</a></div>
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a href="shop.html" class="nav-dropdown-toggle">Shop by Category</a>
+          <div class="nav-dropdown-menu">
+            <a href="cookies.html">Cookies</a>
+            <a href="shop.html#muffins">Muffins</a>
+            <a href="shop.html#breads">Breads &amp; Loaves</a>
+            <a href="shop.html#bars">Bars, Barks &amp; Bites</a>
+          </div>
+        </div>
+        <a href="index.html#blends">Flour Blends</a>
+        <a href="index.html#binders">Vegan Options</a>
+        <a href="sweetener.html">Our Sweetener</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html" class="nav-active">Contact</a>
+        <a href="#" class="cart-link"><span style="font-size:1.2em">&#128722;</span> Cart <span class="cart-count-badge" style="display:none;"></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="contact-hero">
+      <div class="container contact-hero-inner">
+        <h1>Get in Touch</h1>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+      <div class="contact-mokie-panel">
+        <img src="Mokie Note.png" alt="Mokie taking notes" class="contact-mokie-img" />
+      </div>
+      <div class="contact-content">
+        <!-- Info cards -->
+        <div class="contact-info">
+          <p class="contact-section-desc">Questions about an order, a custom request, or just want to say hi? Reach out any way that works for you &mdash; we respond quickly.</p>
+          <div class="contact-card">
+            <div class="contact-card-icon">&#9993;</div>
+            <h3>Email</h3>
+            <p><a href="mailto:orders@shopguiltlessgoodies.com">orders@shopguiltlessgoodies.com</a></p>
+            <p class="contact-card-note">Best for order questions, custom requests, or wholesale inquiries. We reply within 24 hours.</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">&#128247;</div>
+            <h3>Instagram</h3>
+            <p><a href="https://www.instagram.com/shopguiltlessgoodies/" target="_blank" rel="noopener">@shopguiltlessgoodies</a></p>
+            <p class="contact-card-note">Follow for fresh drops, behind-the-scenes baking, and new flavors.</p>
+          </div>
+        </div>
+
+        <!-- Inquiry form -->
+        <div class="contact-form-wrap">
+          <p class="contact-eyebrow" style="margin-bottom:0.25rem;">We&rsquo;d love to hear from you.</p>
+          <h2>Send Us a Message</h2>
+          <form class="contact-form" id="contact-form">
+            <div class="contact-form-row">
+              <div class="contact-form-group">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" name="contact-name" placeholder="Your name" required />
+              </div>
+              <div class="contact-form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="contact-email" placeholder="you@example.com" required />
+              </div>
+            </div>
+            <div class="contact-form-group">
+              <label for="contact-subject">Subject</label>
+              <select id="contact-subject" name="contact-subject">
+                <option value="">Select a topic&hellip;</option>
+                <option value="order">Order question</option>
+                <option value="custom">Custom / bulk order request</option>
+                <option value="wholesale">Wholesale inquiry</option>
+                <option value="allergy">Allergy or ingredient question</option>
+                <option value="feedback">Feedback</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="contact-form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="contact-message" rows="6" placeholder="Tell us what&#39;s on your mind&hellip;" required></textarea>
+            </div>
+            <button type="submit" class="btn primary contact-submit-btn">Send Message</button>
+            <p class="contact-form-error" id="contact-form-error" style="display:none;color:#c0392b;font-size:0.9rem;margin-top:0.6rem;"></p>
+            <p class="contact-form-sent" id="contact-form-sent" style="display:none;">&#10003; Message sent! We&rsquo;ll get back to you shortly.</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
+      <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
+      <div class="footer-col footer-right footer-meta">&copy; <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

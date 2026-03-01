@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#b6e2d3;font-family:system-ui,-apple-system,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#b6e2d3;padding:32px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:#2d8a5e;padding:28px 36px;text-align:center;">
+            <h1 style="margin:0;color:#ffffff;font-size:1.6rem;letter-spacing:0.5px;">Guiltless Goodies</h1>
+            <p style="margin:4px 0 0;color:#b6e2d3;font-size:0.9rem;">Indulgence Without the Spike</p>
+          </td>
+        </tr>
+
+        <!-- Badge -->
+        <tr>
+          <td style="background:#f2faf6;padding:18px 36px;border-bottom:1px solid #e0d6cd;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><span style="font-size:0.82rem;color:#7a6f66;text-transform:uppercase;letter-spacing:1px;">New Contact Message</span><br>
+                  <strong style="font-size:1.2rem;color:#2b2520;">{{contact_subject}}</strong></td>
+                <td align="right" style="color:#7a6f66;font-size:0.88rem;">{{contact_date}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Sender info -->
+        <tr>
+          <td style="padding:24px 36px 8px;">
+            <h2 style="margin:0 0 14px;font-size:1rem;color:#2b2520;border-bottom:1px solid #e0d6cd;padding-bottom:8px;">From</h2>
+            <table cellpadding="0" cellspacing="0" style="font-size:0.92rem;color:#2b2520;line-height:1.8;">
+              <tr><td style="color:#7a6f66;padding-right:16px;">Name</td><td><strong>{{contact_name}}</strong></td></tr>
+              <tr><td style="color:#7a6f66;padding-right:16px;">Email</td><td><a href="mailto:{{contact_email}}" style="color:#2d8a5e;">{{contact_email}}</a></td></tr>
+              <tr><td style="color:#7a6f66;padding-right:16px;">Topic</td><td>{{contact_subject}}</td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Message -->
+        <tr>
+          <td style="padding:16px 36px 28px;">
+            <h2 style="margin:0 0 14px;font-size:1rem;color:#2b2520;border-bottom:1px solid #e0d6cd;padding-bottom:8px;">Message</h2>
+            <p style="font-size:0.95rem;color:#2b2520;line-height:1.7;white-space:pre-wrap;margin:0;">{{contact_message}}</p>
+          </td>
+        </tr>
+
+        <!-- CTA -->
+        <tr>
+          <td style="padding:0 36px 28px;">
+            <p style="margin:0 0 12px;font-size:0.88rem;color:#7a6f66;">Reply directly to this email to respond to {{contact_name}}.</p>
+            <a href="mailto:{{contact_email}}" style="display:inline-block;background:#2d8a5e;color:#fff;text-decoration:none;padding:10px 22px;border-radius:6px;font-size:0.9rem;font-weight:600;">Reply to {{contact_name}}</a>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#f2faf6;padding:16px 36px;text-align:center;border-top:1px solid #e0d6cd;">
+            <p style="margin:0;font-size:0.78rem;color:#7a6f66;">Guiltless Goodies LLC &mdash; shopguiltlessgoodies.com</p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
