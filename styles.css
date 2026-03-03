@@ -127,6 +127,17 @@
   --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
  
+.site-banner {
+  background: #fff3cd;
+  color: #7a5c00;
+  text-align: center;
+  padding: 0.65rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  border-bottom: 1px solid #f0d080;
+  letter-spacing: 0.01em;
+}
+ 
 *,
 *::before,
 *::after {
