@@ -1503,6 +1503,84 @@ a.product-card-link .btn {
   margin-bottom: 0.75rem;
 }
 
+/* ORDER PICKUP LOCATION */
+.order-pickup {
+  margin-top: 2.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.order-pickup h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+.pickup-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.pickup-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: var(--bg-alt);
+}
+.pickup-option:hover {
+  border-color: #2d8a5e;
+}
+.pickup-option input[type="radio"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: #2d8a5e;
+}
+.pickup-option:has(input:checked) {
+  border-color: #2d8a5e;
+  background: #f2faf6;
+}
+.pickup-option-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pickup-option-body strong {
+  font-size: 0.97rem;
+}
+.pickup-option-body span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.pickup-date-row {
+  margin-top: 1rem;
+  flex-direction: column;
+  gap: 5px;
+}
+.pickup-date-row label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.pickup-date-row select {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: var(--font-main);
+  color: var(--text);
+  background: var(--bg-alt);
+  transition: border-color 0.15s;
+  max-width: 340px;
+}
+.pickup-date-row select:focus {
+  outline: none;
+  border-color: #2d8a5e;
+  box-shadow: 0 0 0 3px rgba(45, 138, 94, 0.12);
+}
+
 /* ORDER CONTACT FORM */
 .order-contact {
   margin-top: 2.25rem;
