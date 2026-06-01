@@ -13,6 +13,26 @@
     gtag('js', new Date());
     gtag('config', 'G-K17LBYXKP4');
   </script>
+  <!-- Early pickup redirect: if arriving from Find Us with an empty cart, save pickup and go to shop first -->
+  <script>
+    (function () {
+      var params   = new URLSearchParams(window.location.search);
+      var pickupId = params.get('pickup');
+      if (!pickupId) return;
+      // Save selection before any possible redirect
+      sessionStorage.setItem('gg_pickup_id',   pickupId);
+      sessionStorage.setItem('gg_pickup_date', params.get('date') || '');
+      // Check cart directly via localStorage (cart.js not loaded yet)
+      try {
+        var cart = JSON.parse(localStorage.getItem('guiltlessCart')) || [];
+        if (cart.length === 0) {
+          window.location.replace('shop.html');
+        }
+      } catch (e) {
+        window.location.replace('shop.html');
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="site-banner">

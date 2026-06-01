@@ -100,28 +100,13 @@ function setupPickupLocation() {
 }
 
 // Pre-select pickup location from URL params (?pickup=wenonah&date=2026-06-05)
-// If cart is empty, saves the params to sessionStorage and redirects to shop.
-// On return (no URL params), restores from sessionStorage.
+// Note: the empty-cart redirect is handled by an inline <head> script in order.html
+// before the page renders. By the time this runs, cart always has items (or user
+// navigated here directly). We just restore from sessionStorage if no URL params.
 function applyUrlPickup() {
   var params   = new URLSearchParams(window.location.search);
-  var pickupId = params.get("pickup");
-  var dateVal  = params.get("date");
-
-  // If URL has params, persist them so they survive the shop redirect
-  if (pickupId) {
-    sessionStorage.setItem("gg_pickup_id",   pickupId);
-    sessionStorage.setItem("gg_pickup_date", dateVal || "");
-
-    // Cart empty — send to shop first, we'll restore on return
-    if (Cart.getItems().length === 0) {
-      window.location.href = "shop.html";
-      return;
-    }
-  } else {
-    // No URL params — check if we have a saved pickup from a previous redirect
-    pickupId = sessionStorage.getItem("gg_pickup_id")  || "";
-    dateVal  = sessionStorage.getItem("gg_pickup_date") || "";
-  }
+  var pickupId = params.get("pickup") || sessionStorage.getItem("gg_pickup_id") || "";
+  var dateVal  = params.get("date")  || sessionStorage.getItem("gg_pickup_date") || "";
 
   if (!pickupId) return;
 
