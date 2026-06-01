@@ -100,10 +100,29 @@ function setupPickupLocation() {
 }
 
 // Pre-select pickup location from URL params (?pickup=wenonah&date=2026-06-05)
+// If cart is empty, saves the params to sessionStorage and redirects to shop.
+// On return (no URL params), restores from sessionStorage.
 function applyUrlPickup() {
   var params   = new URLSearchParams(window.location.search);
   var pickupId = params.get("pickup");
   var dateVal  = params.get("date");
+
+  // If URL has params, persist them so they survive the shop redirect
+  if (pickupId) {
+    sessionStorage.setItem("gg_pickup_id",   pickupId);
+    sessionStorage.setItem("gg_pickup_date", dateVal || "");
+
+    // Cart empty — send to shop first, we'll restore on return
+    if (Cart.getItems().length === 0) {
+      window.location.href = "shop.html";
+      return;
+    }
+  } else {
+    // No URL params — check if we have a saved pickup from a previous redirect
+    pickupId = sessionStorage.getItem("gg_pickup_id")  || "";
+    dateVal  = sessionStorage.getItem("gg_pickup_date") || "";
+  }
+
   if (!pickupId) return;
 
   var radio = document.getElementById("pickup-" + pickupId);
@@ -289,6 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (orderNumberEl) orderNumberEl.textContent = orderRef;
         if (confirmEmailEl) confirmEmailEl.textContent = email;
         Cart.clear();
+        sessionStorage.removeItem("gg_pickup_id");
+        sessionStorage.removeItem("gg_pickup_date");
         if (reviewSection) reviewSection.style.display = "none";
         if (confirmSection) confirmSection.style.display = "block";
         window.scrollTo({ top: 0, behavior: "smooth" });
