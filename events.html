@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Us | Guiltless Goodies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K17LBYXKP4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K17LBYXKP4');
+  </script>
+</head>
+<body>
+  <div class="site-banner">
+    &#x1F6A7; This site is currently under construction &mdash; we are not yet taking orders. Check back soon!
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Guiltless Goodies</a></div>
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a href="shop.html" class="nav-dropdown-toggle">Shop by Category</a>
+          <div class="nav-dropdown-menu">
+            <a href="cookies.html">Cookies</a>
+            <a href="shop.html#muffins">Muffins</a>
+            <a href="shop.html#breads">Breads &amp; Loaves</a>
+            <a href="shop.html#bars">Bars, Barks &amp; Bites</a>
+          </div>
+        </div>
+        <a href="index.html#blends">Flour Blends</a>
+        <a href="index.html#binders">Vegan Options</a>
+        <a href="sweetener.html">Our Sweetener</a>
+        <a href="about.html">Our Story</a>
+        <a href="events.html" class="nav-active">Find Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="#" class="cart-link"><span style="font-size:1.2em">&#128722;</span> Cart <span class="cart-count-badge" style="display:none;"></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="events-hero">
+      <div class="container">
+        <p class="events-eyebrow">Where to find us</p>
+        <h1>Find Guiltless Goodies</h1>
+        <p class="events-hero-sub">We sell at local farmers markets and workplace events. Browse the calendar to see where we&rsquo;ll be &mdash; then <a href="order.html">pre-order online</a> to guarantee your batch is ready.</p>
+      </div>
+    </section>
+
+    <!-- Location cards -->
+    <section class="events-locations">
+      <div class="container">
+        <h2 class="events-section-title">Our Locations</h2>
+        <div class="location-cards" id="location-cards">
+          <!-- populated by JS from GG_EVENTS in events.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar + upcoming -->
+    <section class="events-calendar-section">
+      <div class="container">
+        <h2 class="events-section-title">Event Calendar</h2>
+        <div class="cal-wrap">
+
+          <!-- Month grid -->
+          <div class="cal-panel">
+            <div class="cal-header">
+              <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">&#8592;</button>
+              <span class="cal-month-label" id="cal-month-label"></span>
+              <button class="cal-nav-btn" id="cal-next" aria-label="Next month">&#8594;</button>
+            </div>
+            <div class="cal-weekdays">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+              <span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+            <div class="cal-legend" id="cal-legend"></div>
+            <div id="cal-day-detail" class="cal-day-detail" style="display:none;"></div>
+          </div>
+
+          <!-- Upcoming list -->
+          <div class="upcoming-panel">
+            <h3>Upcoming Dates</h3>
+            <div id="upcoming-list"><!-- populated by JS --></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-left"><div class="logo">Guiltless Goodies</div></div>
+      <div class="footer-col footer-center"><div class="tagline">Indulgence without the spike.</div></div>
+      <div class="footer-col footer-right footer-meta">&copy; <span id="year"></span> Guiltless Goodies LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="events.js"></script>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    renderLocationCards();
+    renderUpcoming();
+
+    var calDate = new Date();
+    calDate.setDate(1);
+    renderCalendar(calDate);
+
+    document.getElementById("cal-prev").addEventListener("click", function () {
+      calDate.setMonth(calDate.getMonth() - 1);
+      renderCalendar(calDate);
+    });
+    document.getElementById("cal-next").addEventListener("click", function () {
+      calDate.setMonth(calDate.getMonth() + 1);
+      renderCalendar(calDate);
+    });
+  });
+
+  // ---- Location Cards ----------------------------------------
+  function renderLocationCards() {
+    var container = document.getElementById("location-cards");
+    if (!container) return;
+
+    GG_EVENTS.forEach(function (evt) {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      // Next 3 dates
+      var upcomingHtml = "";
+      if (evt.schedule.type !== "always") {
+        var dates = ggGetUpcomingDates(evt, today, 3);
+        if (dates && dates.length > 0) {
+          upcomingHtml =
+            '<div class="location-card-dates">' +
+              '<span class="location-card-dates-label">Next dates</span>' +
+              '<ul>' +
+                dates.map(function (d) {
+                  return '<li>' + ggFormatDate(d, { weekday: "short", month: "long", day: "numeric" }) + '</li>';
+                }).join("") +
+              '</ul>' +
+            '</div>';
+        } else {
+          upcomingHtml = '<div class="location-card-dates"><span class="location-card-dates-label">No upcoming dates this season.</span></div>';
+        }
+      } else {
+        upcomingHtml = '<div class="location-card-dates"><span class="location-card-dates-label">Available year-round &mdash; order anytime.</span></div>';
+      }
+
+      var addressHtml = (evt.address || evt.city)
+        ? '<div class="location-card-row">' +
+            '<span class="loc-icon" aria-hidden="true">&#128205;</span>' +
+            '<span>' + (evt.address ? evt.address + ', ' : '') + (evt.city || '') +
+              (evt.mapsUrl ? ' &nbsp;<a href="' + evt.mapsUrl + '" target="_blank" rel="noopener" class="maps-link">Map &rarr;</a>' : '') +
+            '</span>' +
+          '</div>'
+        : '';
+
+      var hoursHtml = evt.hours
+        ? '<div class="location-card-row"><span class="loc-icon" aria-hidden="true">&#128336;</span><span>' + evt.hours + '</span></div>'
+        : '';
+
+      var parkingHtml = evt.parking
+        ? '<div class="location-card-row"><span class="loc-icon" aria-hidden="true">&#x1F17F;&#xFE0F;</span><span>' + evt.parking + '</span></div>'
+        : '';
+
+      var card = document.createElement("div");
+      card.className = "location-card";
+      card.innerHTML =
+        '<div class="location-card-accent" style="background:' + evt.color + '"></div>' +
+        '<div class="location-card-inner">' +
+          '<div class="location-card-top">' +
+            '<div class="location-card-icon" style="background:' + evt.color + '">' + evt.icon + '</div>' +
+            '<div>' +
+              '<h3 class="location-card-name">' + evt.name + '</h3>' +
+              '<p class="location-card-sub">' + evt.subtitle + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<p class="location-card-desc">' + evt.description + '</p>' +
+          addressHtml + hoursHtml + parkingHtml +
+          upcomingHtml +
+          '<a href="order.html" class="btn primary location-card-cta">Pre-order for pickup</a>' +
+        '</div>';
+
+      container.appendChild(card);
+    });
+  }
+
+  // ---- Calendar ----------------------------------------------
+  function renderCalendar(d) {
+    var grid     = document.getElementById("cal-grid");
+    var label    = document.getElementById("cal-month-label");
+    var legend   = document.getElementById("cal-legend");
+    var detail   = document.getElementById("cal-day-detail");
+    if (!grid) return;
+
+    var year  = d.getFullYear();
+    var month = d.getMonth();
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    label.textContent = d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+
+    var firstDay     = new Date(year, month, 1).getDay();
+    var daysInMonth  = new Date(year, month + 1, 0).getDate();
+
+    // Clear
+    grid.innerHTML = "";
+    if (detail) { detail.style.display = "none"; detail.innerHTML = ""; }
+
+    // Leading blanks
+    for (var b = 0; b < firstDay; b++) {
+      var blank = document.createElement("div");
+      blank.className = "cal-cell cal-cell-empty";
+      grid.appendChild(blank);
+    }
+
+    // Day cells
+    for (var day = 1; day <= daysInMonth; day++) {
+      var cellDate    = new Date(year, month, day);
+      var eventsToday = ggEventsOnDate(cellDate);
+      var isToday     = cellDate.getTime() === today.getTime();
+      var isPast      = cellDate < today;
+
+      var cell = document.createElement("div");
+      cell.className = "cal-cell" +
+        (isToday ? " cal-today" : "") +
+        (isPast  ? " cal-past"  : "") +
+        (eventsToday.length ? " cal-has-event" : "");
+
+      var num = document.createElement("span");
+      num.className = "cal-day-num";
+      num.textContent = day;
+      cell.appendChild(num);
+
+      if (eventsToday.length) {
+        var dotsEl = document.createElement("div");
+        dotsEl.className = "cal-dots";
+        eventsToday.forEach(function (evt) {
+          var dot = document.createElement("span");
+          dot.className = "cal-dot";
+          dot.style.background = evt.color;
+          dot.title = evt.name;
+          dotsEl.appendChild(dot);
+        });
+        cell.appendChild(dotsEl);
+
+        (function (cd, evts) {
+          cell.addEventListener("click", function () {
+            showDayDetail(cd, evts);
+          });
+        })(cellDate, eventsToday);
+      }
+
+      grid.appendChild(cell);
+    }
+
+    // Legend
+    legend.innerHTML = "";
+    GG_EVENTS.filter(function (e) { return e.schedule.type !== "always"; }).forEach(function (evt) {
+      var item = document.createElement("span");
+      item.className = "cal-legend-item";
+      item.innerHTML = '<span class="cal-dot" style="background:' + evt.color + '"></span>' + evt.name;
+      legend.appendChild(item);
+    });
+  }
+
+  function showDayDetail(date, events) {
+    var detail = document.getElementById("cal-day-detail");
+    if (!detail) return;
+
+    detail.innerHTML =
+      '<div class="cal-detail-header">' +
+        '<strong>' + ggFormatDate(date, { weekday: "long", month: "long", day: "numeric", year: "numeric" }) + '</strong>' +
+        '<button class="cal-detail-close" aria-label="Close">&times;</button>' +
+      '</div>' +
+      events.map(function (evt) {
+        return '<div class="cal-detail-event" style="border-left-color:' + evt.color + '">' +
+          '<span class="cal-dot" style="background:' + evt.color + '"></span>' +
+          '<div>' +
+            '<strong>' + evt.name + '</strong>' +
+            (evt.hours ? '<br><span class="cal-detail-meta">' + evt.hours + '</span>' : '') +
+            (evt.city  ? '<br><span class="cal-detail-meta">' + evt.city  + '</span>' : '') +
+          '</div>' +
+        '</div>';
+      }).join("") +
+      '<a href="order.html" class="btn primary" style="margin-top:0.75rem;display:inline-block;font-size:0.88rem;">Pre-order for this date &rarr;</a>';
+
+    detail.querySelector(".cal-detail-close").addEventListener("click", function () {
+      detail.style.display = "none";
+      detail.innerHTML = "";
+    });
+
+    detail.style.display = "block";
+  }
+
+  // ---- Upcoming list -----------------------------------------
+  function renderUpcoming() {
+    var container = document.getElementById("upcoming-list");
+    if (!container) return;
+
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Gather all upcoming dates across all non-always events
+    var all = [];
+    GG_EVENTS.forEach(function (evt) {
+      var dates = ggGetUpcomingDates(evt, today, 30);
+      if (dates) {
+        dates.forEach(function (d) { all.push({ date: d, event: evt }); });
+      }
+    });
+    all.sort(function (a, b) { return a.date - b.date; });
+    all = all.slice(0, 24);
+
+    if (all.length === 0) {
+      container.innerHTML = '<p class="upcoming-empty">No upcoming dates scheduled yet &mdash; check back soon!</p>';
+      return;
+    }
+
+    // Group by month
+    var groups = [];
+    var keyMap = {};
+    all.forEach(function (item) {
+      var key = item.date.getFullYear() + "-" + item.date.getMonth();
+      if (!keyMap[key]) {
+        keyMap[key] = { label: item.date.toLocaleDateString("en-US", { month: "long", year: "numeric" }), items: [] };
+        groups.push(keyMap[key]);
+      }
+      keyMap[key].items.push(item);
+    });
+
+    container.innerHTML = groups.map(function (g) {
+      return '<div class="upcoming-month">' +
+        '<h4 class="upcoming-month-label">' + g.label + '</h4>' +
+        '<ul class="upcoming-dates-list">' +
+          g.items.map(function (item) {
+            return '<li class="upcoming-date-item">' +
+              '<span class="cal-dot upcoming-dot" style="background:' + item.event.color + '"></span>' +
+              '<div class="upcoming-date-body">' +
+                '<strong>' + ggFormatDate(item.date, { weekday: "short", month: "short", day: "numeric" }) + '</strong>' +
+                '<span class="upcoming-event-name">' + item.event.name + '</span>' +
+                (item.event.city ? '<span class="upcoming-event-meta">' + item.event.city + '</span>' : '') +
+              '</div>' +
+            '</li>';
+          }).join("") +
+        '</ul>' +
+      '</div>';
+    }).join("");
+  }
+  </script>
+</body>
+</html>

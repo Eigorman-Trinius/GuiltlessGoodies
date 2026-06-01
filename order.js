@@ -1,83 +1,101 @@
 // Order / Cart Review page logic for Guiltless Goodies
+// Pickup location data lives in events.js (loaded before this file).
 
 // ------------------------------------
-// Pickup location helpers
+// Build pickup UI from GG_EVENTS
 // ------------------------------------
-
-// Woodbury Farmers Market specific dates (2026 season)
-var WOODBURY_DATES = [
-  new Date(2026, 5, 13),
-  new Date(2026, 5, 27),
-  new Date(2026, 6, 11),
-  new Date(2026, 6, 25),
-  new Date(2026, 7,  8),
-  new Date(2026, 7, 22),
-  new Date(2026, 8, 12),
-  new Date(2026, 8, 26)
-];
-
-// Returns the Nth occurrence of Thursday (day 4) in a given month/year
-function getNthThursday(year, month, n) {
-  var first = new Date(year, month, 1);
-  var dow = first.getDay(); // 0=Sun
-  var firstThu = 1 + ((4 - dow + 7) % 7);
-  return new Date(year, month, firstThu + (n - 1) * 7);
-}
-
-// Returns the 1st and 3rd Thursday dates for May–September of the given year
-function getWenonahDates(year) {
-  var today = new Date();
-  today.setHours(0, 0, 0, 0);
-  var dates = [];
-  for (var m = 4; m <= 8; m++) { // 4=May, 8=Sep
-    [1, 3].forEach(function (n) {
-      var d = getNthThursday(year, m, n);
-      if (d >= today) dates.push(d);
-    });
-  }
-  return dates;
-}
-
-function formatPickupDate(d) {
-  return d.toLocaleDateString("en-US", {
-    weekday: "long", month: "long", day: "numeric", year: "numeric"
-  });
-}
-
-function populateDateSelect(selectEl, dates) {
-  while (selectEl.options.length > 1) selectEl.remove(1);
-  if (dates.length === 0) {
-    var opt = document.createElement("option");
-    opt.disabled = true;
-    opt.textContent = "No upcoming dates available";
-    selectEl.appendChild(opt);
-    return;
-  }
-  dates.forEach(function (d) {
-    var opt = document.createElement("option");
-    opt.value = d.toISOString().split("T")[0];
-    opt.textContent = formatPickupDate(d);
-    selectEl.appendChild(opt);
-  });
-}
-
 function setupPickupLocation() {
-  var woodburyDatesEl = document.getElementById("woodbury-dates");
-  var wenonahDatesEl  = document.getElementById("wenonah-dates");
-  var woodburySelect  = document.getElementById("woodbury-date-select");
-  var wenonahSelect   = document.getElementById("wenonah-date-select");
+  var container    = document.getElementById("pickup-options-container");
+  var selectorsWrap = document.getElementById("pickup-date-selectors");
+  if (!container) return;
 
   var today = new Date();
   today.setHours(0, 0, 0, 0);
-  var futureWoodbury = WOODBURY_DATES.filter(function (d) { return d >= today; });
-  if (woodburySelect) populateDateSelect(woodburySelect, futureWoodbury);
-  if (wenonahSelect)  populateDateSelect(wenonahSelect, getWenonahDates(today.getFullYear()));
 
-  document.querySelectorAll('input[name="pickup-location"]').forEach(function (radio) {
-    radio.addEventListener("change", function () {
-      if (woodburyDatesEl) woodburyDatesEl.style.display = this.value === "woodbury" ? "flex" : "none";
-      if (wenonahDatesEl)  wenonahDatesEl.style.display  = this.value === "wenonah"  ? "flex" : "none";
-    });
+  GG_EVENTS.forEach(function (evt) {
+    // Radio card
+    var label = document.createElement("label");
+    label.className = "pickup-option";
+    label.htmlFor = "pickup-" + evt.id;
+
+    var radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "pickup-location";
+    radio.value = evt.id;
+    radio.id = "pickup-" + evt.id;
+
+    var body = document.createElement("div");
+    body.className = "pickup-option-body";
+
+    var strong = document.createElement("strong");
+    strong.textContent = evt.name;
+
+    var span = document.createElement("span");
+    if (evt.schedule.type === "always") {
+      span.textContent = "Available year-round \u2014 we\u2019ll coordinate a pickup time after your order.";
+    } else {
+      span.textContent = evt.hours + " \u2022 " + evt.city;
+    }
+
+    body.appendChild(strong);
+    body.appendChild(span);
+    label.appendChild(radio);
+    label.appendChild(body);
+    container.appendChild(label);
+
+    // Date selector (for market events only)
+    if (evt.schedule.type !== "always" && selectorsWrap) {
+      var dateRow = document.createElement("div");
+      dateRow.id = "dates-" + evt.id;
+      dateRow.className = "pickup-date-row";
+      dateRow.style.display = "none";
+
+      var lbl = document.createElement("label");
+      lbl.setAttribute("for", "select-" + evt.id);
+      lbl.innerHTML = "Select market date <span class='required'>*</span>";
+
+      var sel = document.createElement("select");
+      sel.id = "select-" + evt.id;
+
+      var defaultOpt = document.createElement("option");
+      defaultOpt.value = "";
+      defaultOpt.textContent = "\u2014 Select a date \u2014";
+      sel.appendChild(defaultOpt);
+
+      var upcoming = ggGetUpcomingDates(evt, today);
+      if (!upcoming || upcoming.length === 0) {
+        var noOpt = document.createElement("option");
+        noOpt.disabled = true;
+        noOpt.textContent = "No upcoming dates available";
+        sel.appendChild(noOpt);
+      } else {
+        upcoming.forEach(function (d) {
+          var opt = document.createElement("option");
+          opt.value = d.toISOString().split("T")[0];
+          opt.textContent = ggFormatDate(d);
+          sel.appendChild(opt);
+        });
+      }
+
+      dateRow.appendChild(lbl);
+      dateRow.appendChild(sel);
+      selectorsWrap.appendChild(dateRow);
+
+      radio.addEventListener("change", function () {
+        selectorsWrap.querySelectorAll(".pickup-date-row").forEach(function (el) {
+          el.style.display = "none";
+        });
+        dateRow.style.display = "flex";
+      });
+    } else {
+      radio.addEventListener("change", function () {
+        if (selectorsWrap) {
+          selectorsWrap.querySelectorAll(".pickup-date-row").forEach(function (el) {
+            el.style.display = "none";
+          });
+        }
+      });
+    }
   });
 }
 
@@ -166,8 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var notes = notesEl ? notesEl.value.trim()  : "";
 
       // Validate pickup location
-      var pickupRadio = document.querySelector('input[name="pickup-location"]:checked');
-      var pickupValue = pickupRadio ? pickupRadio.value : "";
+      var pickupRadio  = document.querySelector('input[name="pickup-location"]:checked');
+      var pickupValue  = pickupRadio ? pickupRadio.value : "";
       if (!pickupValue) {
         if (orderErrorEl) {
           orderErrorEl.textContent = "Please select a pickup location before placing your order.";
@@ -176,33 +194,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return;
       }
+
       var pickupInfo = "";
-      if (pickupValue === "jpm") {
-        pickupInfo = "JPM (Workplace) \u2014 will coordinate after order";
-      } else if (pickupValue === "woodbury") {
-        var woodburySelectEl = document.getElementById("woodbury-date-select");
-        if (!woodburySelectEl || !woodburySelectEl.value) {
-          if (orderErrorEl) {
-            orderErrorEl.textContent = "Please select a market date for Woodbury Farmers Market.";
-            orderErrorEl.style.display = "block";
-            orderErrorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      var matchedEvent = null;
+      for (var ei = 0; ei < GG_EVENTS.length; ei++) {
+        if (GG_EVENTS[ei].id === pickupValue) { matchedEvent = GG_EVENTS[ei]; break; }
+      }
+      if (matchedEvent) {
+        if (matchedEvent.schedule.type === "always") {
+          pickupInfo = matchedEvent.name + " \u2014 will coordinate after order";
+        } else {
+          var dateSelEl = document.getElementById("select-" + pickupValue);
+          if (!dateSelEl || !dateSelEl.value) {
+            if (orderErrorEl) {
+              orderErrorEl.textContent = "Please select a market date for " + matchedEvent.name + ".";
+              orderErrorEl.style.display = "block";
+              orderErrorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            return;
           }
-          return;
+          pickupInfo = matchedEvent.name + " \u2014 " + dateSelEl.options[dateSelEl.selectedIndex].text;
         }
-        pickupInfo = "Woodbury Farmers Market \u2014 " +
-          woodburySelectEl.options[woodburySelectEl.selectedIndex].text;
-      } else if (pickupValue === "wenonah") {
-        var wenonahSelectEl = document.getElementById("wenonah-date-select");
-        if (!wenonahSelectEl || !wenonahSelectEl.value) {
-          if (orderErrorEl) {
-            orderErrorEl.textContent = "Please select a market date for Wenonah Farmers Market.";
-            orderErrorEl.style.display = "block";
-            orderErrorEl.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-          return;
-        }
-        pickupInfo = "Wenonah Farmers Market \u2014 " +
-          wenonahSelectEl.options[wenonahSelectEl.selectedIndex].text;
       }
 
       if (!name || !email) {
