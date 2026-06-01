@@ -99,6 +99,29 @@ function setupPickupLocation() {
   });
 }
 
+// Pre-select pickup location from URL params (?pickup=wenonah&date=2026-06-05)
+function applyUrlPickup() {
+  var params   = new URLSearchParams(window.location.search);
+  var pickupId = params.get("pickup");
+  var dateVal  = params.get("date");
+  if (!pickupId) return;
+
+  var radio = document.getElementById("pickup-" + pickupId);
+  if (!radio) return;
+
+  radio.checked = true;
+  radio.dispatchEvent(new Event("change"));
+
+  if (dateVal) {
+    var sel = document.getElementById("select-" + pickupId);
+    if (sel) sel.value = dateVal;
+  }
+
+  // Scroll pickup section into view smoothly
+  var pickupSection = document.querySelector(".order-pickup");
+  if (pickupSection) pickupSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 var EMAILJS_SERVICE_ID  = "service_9zqw75g";
 var EMAILJS_TEMPLATE_ID = "template_1lhg7iy";
 var EMAILJS_PUBLIC_KEY  = "lJD-okYpWeZr86zCf";
@@ -165,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.renderOrderReview = renderReview;
 
   setupPickupLocation();
+  applyUrlPickup();
 
   // Place order — send via EmailJS
   if (placeOrderBtn) {

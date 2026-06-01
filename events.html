@@ -58,7 +58,7 @@
     <!-- Location cards -->
     <section class="events-locations">
       <div class="container">
-        <h2 class="events-section-title">Our Locations</h2>
+        <h2 class="events-section-title">Where We&rsquo;ll Be</h2>
         <div class="location-cards" id="location-cards">
           <!-- populated by JS from GG_EVENTS in events.js -->
         </div>
@@ -194,7 +194,7 @@
           '<p class="location-card-desc">' + evt.description + '</p>' +
           addressHtml + hoursHtml + parkingHtml +
           upcomingHtml +
-          '<a href="order.html" class="btn primary location-card-cta">Pre-order for pickup</a>' +
+          '<a href="order.html?pickup=' + evt.id + '" class="btn primary location-card-cta">Pre-order for pickup</a>' +
         '</div>';
 
       container.appendChild(card);
@@ -290,16 +290,17 @@
         '<button class="cal-detail-close" aria-label="Close">&times;</button>' +
       '</div>' +
       events.map(function (evt) {
+        var isoDate = date.toISOString().split("T")[0];
         return '<div class="cal-detail-event" style="border-left-color:' + evt.color + '">' +
           '<span class="cal-dot" style="background:' + evt.color + '"></span>' +
           '<div>' +
             '<strong>' + evt.name + '</strong>' +
             (evt.hours ? '<br><span class="cal-detail-meta">' + evt.hours + '</span>' : '') +
             (evt.city  ? '<br><span class="cal-detail-meta">' + evt.city  + '</span>' : '') +
+            '<br><a href="order.html?pickup=' + evt.id + '&date=' + isoDate + '" class="btn primary" style="margin-top:0.5rem;display:inline-block;font-size:0.82rem;">Pre-order for this date &rarr;</a>' +
           '</div>' +
         '</div>';
       }).join("") +
-      '<a href="order.html" class="btn primary" style="margin-top:0.75rem;display:inline-block;font-size:0.88rem;">Pre-order for this date &rarr;</a>';
 
     detail.querySelector(".cal-detail-close").addEventListener("click", function () {
       detail.style.display = "none";
