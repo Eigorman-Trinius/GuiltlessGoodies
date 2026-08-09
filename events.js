@@ -1,4 +1,4 @@
-// Guiltless Goodies — Event & Location Data
+﻿// Mokie's Munchies — Event & Location Data
 // ============================================================
 // Add new pickup / market locations here.
 // Both the Order page and the Find Us page read from this file.

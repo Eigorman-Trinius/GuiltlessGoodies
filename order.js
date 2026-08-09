@@ -1,4 +1,4 @@
-// Order / Cart Review page logic for Guiltless Goodies
+﻿// Order / Cart Review page logic for Mokie's Munchies
 // Pickup location data lives in events.js (loaded before this file).
 
 // ------------------------------------

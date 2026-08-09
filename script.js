@@ -1,4 +1,4 @@
-// Guiltless Goodies — main UI logic (cart state managed by cart.js)
+﻿// Mokie's Munchies — main UI logic (cart state managed by cart.js)
 
 document.addEventListener("DOMContentLoaded", function () {
 

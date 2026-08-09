@@ -1,4 +1,4 @@
-// Global cart module for Guiltless Goodies
+﻿// Global cart module for Mokie's Munchies
 window.Cart = (function () {
   'use strict';
   const KEY = 'guiltlessCart';

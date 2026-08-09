@@ -1,6 +1,6 @@
-# Copilot Instructions for Guiltless Goodies E-Commerce
+# Copilot Instructions for Mokie's Munchies E-Commerce
 
-This workspace is for a full-featured e-commerce web application for Guiltless Goodies.
+This workspace is for a full-featured e-commerce web application for Mokie's Munchies.
 
 ## Features Checklist
 - Product catalog with filtering/sorting

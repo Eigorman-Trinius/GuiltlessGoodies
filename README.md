@@ -1,6 +1,6 @@
-# Guiltless Goodies E-Commerce
+﻿# Mokie's Munchies E-Commerce
 
-This project is a full-featured e-commerce web application for Guiltless Goodies.
+This project is a full-featured e-commerce web application for Mokie's Munchies.
 
 ## Features
 - Product catalog

@@ -1,0 +1,14 @@
+# Credentials — never commit
+aws-ses-smtp-credentials.txt
+
+# Local-only kitchen management portal
+kitchen-portal/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Local build artifacts
+FullProd/
